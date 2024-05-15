@@ -1,0 +1,29 @@
+.homepage_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.main_list_container {
+  max-width: 400px;
+  flex-basis: 100%;
+}
+
+.list_title {
+  background-color: #2a7df6;
+  color: white;
+  padding: 10px;
+  margin: 0;
+}
+
+.main_list_container > div {
+  display: grid;
+  border-bottom: 1px solid lightgray;
+  cursor: pointer;
+}
+
+.main_list_container > div > p {
+  margin: 4px 0;
+  padding: 4px;
+}
