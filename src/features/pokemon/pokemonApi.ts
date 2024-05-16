@@ -3,8 +3,6 @@ import { PokemonDetailTypes, PokemonListResponseTypes } from "./pokemonTypes";
 
 const baseUrl = import.meta.env.VITE_BASE_API_URL;
 
-console.log("baseUrl", baseUrl);
-
 export const pokemonApi = createApi({
   reducerPath: "pokemonApi",
   baseQuery: fetchBaseQuery({ baseUrl: `${baseUrl}/api/v2` }),
