@@ -1,23 +1,24 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { useAppDispatch } from "hooks";
 import { selectPokemon } from "features/pokemon/pokemonSlice";
 import { useNavigate } from "react-router-dom";
 import "./pokemonList.css";
-import { capitalizeString, extractPokemonId } from "app/data/helpers";
-import { PokemonListProps, Pokemon } from "./pokemonListTypes";
+import {
+  capitalizeString,
+  extractPokemonId,
+  pokeImagegenerator,
+} from "app/data/helpers";
 import { POKEMON_LIST_TITLE } from "./pokemonListConstants";
+import { PokemonListProps, Pokemon } from "./pokemonListTypes";
 
 const PokemonList: React.FC<PokemonListProps> = ({ data }) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const handlePokemon = useCallback(
-    (pokemon: Pokemon) => {
-      dispatch(selectPokemon(pokemon.name));
-      navigate(`/pokemon/${extractPokemonId(pokemon.url)}`);
-    },
-    [dispatch, navigate]
-  );
+  const handlePokemon = (pokemon: Pokemon) => {
+    dispatch(selectPokemon(pokemon.name));
+    navigate(`/pokemon/${extractPokemonId(pokemon.url)}`);
+  };
 
   if (!data) return <div>No data available</div>;
 
@@ -31,6 +32,10 @@ const PokemonList: React.FC<PokemonListProps> = ({ data }) => {
             key={`${pokemon.name}-${index}`}
             onClick={() => handlePokemon(pokemon)}
           >
+            <img
+              className="pokemonImage"
+              src={pokeImagegenerator(extractPokemonId(pokemon.url))}
+            />
             <h4>{capitalizeString(pokemon.name)}</h4>
           </div>
         ))}

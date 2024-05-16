@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  /* min-height: 100vh; */
 }
 
 .main_list_container {
@@ -18,9 +18,15 @@
 }
 
 .main_list_container > div {
-  display: grid;
+  display: flex;
   border-bottom: 1px solid lightgray;
   cursor: pointer;
+  align-items: center;
+  gap: 20px;
+}
+
+.pokemonImage {
+  width: 60px;
 }
 
 .main_list_container > div > p {

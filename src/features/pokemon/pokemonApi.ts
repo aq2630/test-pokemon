@@ -7,8 +7,11 @@ export const pokemonApi = createApi({
   reducerPath: "pokemonApi",
   baseQuery: fetchBaseQuery({ baseUrl: `${baseUrl}/api/v2` }),
   endpoints: (builder) => ({
-    getPokemonList: builder.query<PokemonListResponseTypes, void>({
-      query: () => "/pokemon",
+    getPokemonList: builder.query<
+      PokemonListResponseTypes,
+      { offset: number; limit: number }
+    >({
+      query: ({ offset, limit }) => `/pokemon?offset=${offset}&limit=${limit}`,
     }),
     getPokemonByName: builder.query<PokemonDetailTypes, string>({
       query: (id) => `/pokemon/${id}`,
